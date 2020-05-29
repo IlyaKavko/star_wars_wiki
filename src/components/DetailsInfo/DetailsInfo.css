@@ -1,0 +1,14 @@
+.DetailsInfo {
+    width: 45%;
+    background-color: #243040;
+    padding: 15px;
+}
+
+.DetailsInfo .info_block {
+    align-items: center;
+}
+
+.DetailsInfo .details_info_block {
+    list-style: none;
+    padding-left: 15px;
+}
