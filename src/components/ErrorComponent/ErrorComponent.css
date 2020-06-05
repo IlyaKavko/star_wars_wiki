@@ -1,0 +1,12 @@
+.ErrorComponent {
+    text-align: center;
+}
+
+.ErrorComponent > p {
+    margin: 0;
+    font-size: 20px;
+}
+
+.ErrorComponent img {
+    width: 35%;
+}

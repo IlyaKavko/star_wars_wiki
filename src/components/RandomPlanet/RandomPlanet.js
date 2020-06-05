@@ -3,19 +3,21 @@ import React from "react";
 import SwapiService from "../../services/SwapiServices";
 import "./RandomPlanet.css";
 import Loader from "../Loader";
+import ErrorComponetn from "../ErrorComponent";
 
 export default class RandomPlanet extends React.Component {
-  constructor() {
-    super();
-    this.updatePlanet();
-  }
 
   swapi = new SwapiService();
 
   state = {
     planet: {},
     load: true,
+    error: false,
   };
+
+  componentDidMount() {
+    setInterval(this.updatePlanet, 5000);
+  }
 
   onPlanetLoaded = (planet) => {
     this.setState({
@@ -24,44 +26,90 @@ export default class RandomPlanet extends React.Component {
     });
   };
 
-  updatePlanet() {
+  onError = () => {
+    this.setState({
+      error: true,
+      load: false,
+    });
+  };
+
+  updatePlanet = () => {
     const id = Math.round(Math.random() * 20);
-    this.swapi.getPlanet(id).then(this.onPlanetLoaded);
+    this.swapi.getPlanet(id).then(this.onPlanetLoaded).catch(this.onError);
   }
 
   render() {
-    const {
-      planet: { name, diameter, population, climate, id, load },
-    } = this.state;
+    const { planet, load, error } = this.state;
 
-    if (load) {
-      return <Loader />;
-    }
+    const errorContent = error ? <ErrorComponetn /> : null;
+    const loader = load ? <Loader /> : null;
+    const content = !load && !error ? <PlanetView planet={planet} /> : null;
 
     return (
       <div className="RandomPlanet">
-        <h3>{name}</h3>
-        <div className="planet_block d-flex">
-          <img
-            src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-            alt="planet"
-          />
-          <ul className="planet_info_block">
-            <li>
-              <span>Diameter</span>
-              <span>{diameter}</span>
-            </li>
-            <li>
-              <span>Population</span>
-              <span>{population}</span>
-            </li>
-            <li>
-              <span>Climate</span>
-              <span>{climate}</span>
-            </li>
-          </ul>
-        </div>
+        {errorContent}
+        {loader}
+        {content}
       </div>
     );
+
+    // if (load) {
+    //   return <Loader />;
+    // }
+
+    // return (
+    //   <div className="RandomPlanet">
+    //     <h3>{name}</h3>
+    //     <div className="planet_block d-flex">
+    //       <img
+    //         src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+    //         alt="planet"
+    //       />
+    //       <ul className="planet_info_block">
+    //         <li>
+    //           <span>Diameter</span>
+    //           <span>{diameter}</span>
+    //         </li>
+    //         <li>
+    //           <span>Population</span>
+    //           <span>{population}</span>
+    //         </li>
+    //         <li>
+    //           <span>Climate</span>
+    //           <span>{climate}</span>
+    //         </li>
+    //       </ul>
+    //     </div>
+    //   </div>
+    // );
   }
 }
+
+const PlanetView = ({ planet }) => {
+  const { id, name, diameter, climate, population } = planet;
+  return (
+    <>
+      <h3>{name}</h3>
+      <div className="planet_block d-flex">
+        <img
+          src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+          alt="planet"
+        />
+        <ul className="planet_info_block">
+          <li>
+            <span>Diameter</span>
+            <span>{diameter}</span>
+          </li>
+          <li>
+            <span>Population</span>
+            <span>{population}</span>
+          </li>
+          <li>
+            <span>Climate</span>
+            <span>{climate}</span>
+          </li>
+        </ul>
+      </div>
+    </>
+  );
+};

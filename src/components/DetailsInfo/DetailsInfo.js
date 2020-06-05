@@ -1,31 +1,57 @@
 import React from "react";
-import "./DetailsInfo.css"
-import UserIMG from "./UserImg/user1.png"
+import "./DetailsInfo.css";
+import SwapiServices from "../../services/SwapiServices";
 
+export default class DetailsInfo extends React.Component {
+  constructor() {
+    super();
+    this.updatePerson();
+  }
 
-const DetailsInfo = () => {
-  return (
-    <div className="DetailsInfo">
-      <h3>Person Name</h3>
-      <div className="info_block d-flex">
-        <img src={UserIMG} alt="User" />
-        <ul className="detail_info_block">
+  swapi = new SwapiServices();
+
+  state = {
+    person: {},
+  };
+
+  onPersonLoaded = (person) => {
+    this.setState({
+      person,
+    });
+  };
+
+  updatePerson() {
+    const id = Math.round(Math.random() * 20);
+    this.swapi.getPerson(id).then(this.onPersonLoaded);
+  }
+
+  render() {
+    const {person:{name, mass, homeworld, gender, id}} = this.state;
+
+    return (
+      <div className="DetailsInfo">
+        <h3>{ name }</h3>
+        <div className="info_block d-flex">
+          <img
+            src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+            alt="User"
+          />
+          <ul className="detail_info_block">
             <li>
-                <span>mass</span>
-                <span>200</span>
+              <span>mass</span>
+              <span>{mass}</span>
             </li>
             <li>
-                <span>homewoeld</span>
-                <span>Venera</span>
+              <span>homeworld</span>
+              <span>{homeworld}</span>
             </li>
             <li>
-                <span>gender</span>
-                <span>male</span>
+              <span>gender</span>
+              <span>{gender}</span>
             </li>
-        </ul>
+          </ul>
+        </div>
       </div>
-    </div>
-  );
-};
-
-export default DetailsInfo;
+    );
+  }
+}
