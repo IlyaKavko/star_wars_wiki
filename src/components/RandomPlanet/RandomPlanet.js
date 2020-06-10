@@ -6,7 +6,6 @@ import Loader from "../Loader";
 import ErrorComponetn from "../ErrorComponent";
 
 export default class RandomPlanet extends React.Component {
-
   swapi = new SwapiService();
 
   state = {
@@ -16,7 +15,12 @@ export default class RandomPlanet extends React.Component {
   };
 
   componentDidMount() {
-    setInterval(this.updatePlanet, 5000);
+    this.updatePlanet();
+    this.interval = setInterval(this.updatePlanet, 5000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   onPlanetLoaded = (planet) => {
@@ -34,9 +38,10 @@ export default class RandomPlanet extends React.Component {
   };
 
   updatePlanet = () => {
+    console.log('u')
     const id = Math.round(Math.random() * 20);
     this.swapi.getPlanet(id).then(this.onPlanetLoaded).catch(this.onError);
-  }
+  };
 
   render() {
     const { planet, load, error } = this.state;

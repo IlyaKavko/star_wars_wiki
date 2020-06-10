@@ -3,47 +3,60 @@ import "./DetailsInfo.css";
 import SwapiServices from "../../services/SwapiServices";
 
 export default class DetailsInfo extends React.Component {
-  constructor() {
-    super();
-    this.updatePerson();
-  }
-
   swapi = new SwapiServices();
 
   state = {
-    person: {},
+    person: null,
   };
 
-  onPersonLoaded = (person) => {
-    this.setState({
-      person,
-    });
-  };
+  componentDidMount() {
+    this.updatePerson();
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.personId !== prevProps.personId){
+      this.updatePerson();
+    }
+  }
 
   updatePerson() {
-    const id = Math.round(Math.random() * 20);
-    this.swapi.getPerson(id).then(this.onPersonLoaded);
+    const { personId } = this.props;
+    if (!personId) {
+      return;
+    }
+
+    this.swapi.getPerson(personId).then((person) => {
+      this.setState({ person });
+    });
   }
 
   render() {
-    const {person:{name, mass, homeworld, gender, id}} = this.state;
+    if (!this.state.person) {
+      return (
+        <div className="DetailsInfo">
+          <p>Опять сломал сука</p>
+        </div>
+      );
+    }
+
+    const {id, name, mass, birthDate, gender} = this.state.person;
 
     return (
       <div className="DetailsInfo">
-        <h3>{ name }</h3>
+        <h3>{name}</h3>
         <div className="info_block d-flex">
-          <img
-            src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
-            alt="User"
-          />
+        <img
+          src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+          alt="planet"
+        />
           <ul className="detail_info_block">
             <li>
               <span>mass</span>
               <span>{mass}</span>
             </li>
             <li>
-              <span>homeworld</span>
-              <span>{homeworld}</span>
+              <span>birth date</span>
+              <span>{birthDate}</span>
             </li>
             <li>
               <span>gender</span>
