@@ -7,12 +7,12 @@ export default class ErrorTest extends React.Component {
     };
 
     render() {
-        console.log('опять ошибка')
+        console.log('Error')
         if(this.state.error) {
-            this.myTest.test = 'Сука сломал !!!!';
+            this.myTest.test = 'Error test!!!!';
         }
         return(
-            <button onClick={() => this.setState({error: true})} >Texst Error</button>
+            <button onClick={() => this.setState({error: true})} >Test Error</button>
         )
     }
 }

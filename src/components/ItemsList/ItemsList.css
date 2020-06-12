@@ -1,5 +1,4 @@
 .ItemsList {
-    width: 49%;
     background-color: #243040;
     padding: 15px;
     margin: 0;
@@ -7,4 +6,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+.item_group {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.item_group:active {
+    background-color: #1c1e22;
 }
