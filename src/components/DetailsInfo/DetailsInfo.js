@@ -1,6 +1,7 @@
 import React from "react";
 import "./DetailsInfo.css";
 import SwapiServices from "../../services/SwapiServices";
+import { SwapiConsumer } from "../SwapiServiceContext/SwapiServiceContext";
 
 export default class DetailsInfo extends React.Component {
   swapi = new SwapiServices();
@@ -14,7 +15,7 @@ export default class DetailsInfo extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.personId !== prevProps.personId){
+    if (this.props.personId !== prevProps.personId) {
       this.updatePerson();
     }
   }
@@ -34,37 +35,43 @@ export default class DetailsInfo extends React.Component {
     if (!this.state.person) {
       return (
         <div className="DetailsInfo">
-          <p>Опять сломал сука</p>
+          <p>Error</p>
         </div>
       );
     }
 
-    const {id, name, mass, birthDate, gender} = this.state.person;
+    const { id, name, mass, birthDate, gender } = this.state.person;
 
     return (
-      <div className="DetailsInfo">
-        <h3>{name}</h3>
-        <div className="info_block d-flex">
-        <img
-          src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
-          alt="planet"
-        />
-          <ul className="detail_info_block">
-            <li>
-              <span>mass</span>
-              <span>{mass}</span>
-            </li>
-            <li>
-              <span>birth date</span>
-              <span>{birthDate}</span>
-            </li>
-            <li>
-              <span>gender</span>
-              <span>{gender}</span>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <SwapiConsumer>
+        {(swapi) => {
+          return (
+            <div className="DetailsInfo">
+              <h3>{name}</h3>
+              <div className="info_block d-flex">
+                <img
+                  src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+                  alt="planet"
+                />
+                <ul className="detail_info_block">
+                  <li>
+                    <span>mass</span>
+                    <span>{mass}</span>
+                  </li>
+                  <li>
+                    <span>birth date</span>
+                    <span>{birthDate}</span>
+                  </li>
+                  <li>
+                    <span>gender</span>
+                    <span>{gender}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          );
+        }}
+      </SwapiConsumer>
     );
   }
 }

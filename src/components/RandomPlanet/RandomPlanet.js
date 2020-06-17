@@ -38,7 +38,6 @@ export default class RandomPlanet extends React.Component {
   };
 
   updatePlanet = () => {
-    console.log('u')
     const id = Math.round(Math.random() * 20);
     this.swapi.getPlanet(id).then(this.onPlanetLoaded).catch(this.onError);
   };
@@ -57,36 +56,6 @@ export default class RandomPlanet extends React.Component {
         {content}
       </div>
     );
-
-    // if (load) {
-    //   return <Loader />;
-    // }
-
-    // return (
-    //   <div className="RandomPlanet">
-    //     <h3>{name}</h3>
-    //     <div className="planet_block d-flex">
-    //       <img
-    //         src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-    //         alt="planet"
-    //       />
-    //       <ul className="planet_info_block">
-    //         <li>
-    //           <span>Diameter</span>
-    //           <span>{diameter}</span>
-    //         </li>
-    //         <li>
-    //           <span>Population</span>
-    //           <span>{population}</span>
-    //         </li>
-    //         <li>
-    //           <span>Climate</span>
-    //           <span>{climate}</span>
-    //         </li>
-    //       </ul>
-    //     </div>
-    //   </div>
-    // );
   }
 }
 

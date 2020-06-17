@@ -6,8 +6,8 @@ import ErrorTest from "../errorTest";
 import ErrorComponetn from "../ErrorComponent";
 import PeoplePage from "../PeoplePage";
 import SwapiServices from "../../services/SwapiServices";
-import ItemsList from "../ItemsList";
-import DetailsInfo from "../DetailsInfo";
+import PlanetPage from "../PlanetPage";
+import { SwapiProvider } from "../SwapiServiceContext/SwapiServiceContext";
 
 class App extends React.Component {
   swapi = new SwapiServices();
@@ -23,25 +23,21 @@ class App extends React.Component {
     });
   }
 
-  onTogglePlanet = () => {
-    this.setState((prevStatr) => {
-      return { isRandomPlanet: !prevStatr.isRandomPlanet };
-    });
-  };
-
   render() {
     if (this.state.error) {
       return <ErrorComponetn />;
     }
 
     return (
-      <div className="App">
-        <Header />
-        {this.state.isRandomPlanet && <RandomPlanet />}
-        <button onClick={this.onTogglePlanet}>on/off planet</button>
-        <ErrorTest />
-        <PeoplePage />
-      </div>
+      <SwapiProvider value={this.swapi}>
+        <div className="App">
+          <Header />
+          <RandomPlanet />
+          <ErrorTest />
+          <PeoplePage />
+          <PlanetPage />
+        </div>
+      </SwapiProvider>
     );
   }
 }
