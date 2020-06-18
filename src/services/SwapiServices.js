@@ -10,50 +10,71 @@ export default class SwapiServices {
 
     const result = await response.json();
     return result;
-  }
+  };
 
   getAllPeople = async () => {
     const response = await this.getData("/people/");
     return response.results.map(this.transformPerson);
-  }
+  };
 
   getPerson = async (id) => {
     const people = await this.getData(`/people/${id}/`);
-    return this.transformPerson(people);
-  }
+    
+    const planetHome = await this.getURL(people.homeworld);
+    return this.transformPerson(people,planetHome);
+  };
 
-  transformPerson = (person) => {
+  transformPerson = (person, home) => {
     return {
       id: this.getId(person),
       name: person.name,
       gender: person.gender,
       mass: person.mass,
       birthDate: person.birth_year,
+      homeworld: home,
     };
   };
 
-  getAllStarships = async () => {
-    const response = await this.getData("/starships/");
-    return response.results;
+  getURL = async (url) => {
+    const response = await fetch(url);
+    const result = await response.json();
+    return result.name
   }
 
-  getStarships = (id) => {
-    return this.getData(`/starships/${id}/`);
+  getAllStarships = async () => {
+    const response = await this.getData("/starships/");
+    return response.results.map(this.transformStarships);
+  };
+
+  getStarships = async (id) => {
+    const starships = await this.getData(`/starships/${id}/`);
+    return this.transformStarships(starships)
+  };
+
+  transformStarships = (starships) => {
+    return {
+      id: this.getId(starships),
+      name: starships.name,
+      model: starships.model,
+      manufacturer: starships.manufacturer,
+      starshipClass: starships.starship_class,
+    }
   }
+
 
   getAllPlanet = async () => {
     const response = await this.getData("/planets/");
-    return response.result.map(this.transformPlanet);
-  }
+    return response.results.map(this.transformPerson);
+  };
 
   getPlanet = async (id) => {
     const planet = await this.getData(`/planets/${id}/`);
     return this.transformPlanet(planet);
-  }
+  };
 
   getId = (item) => {
     return item.url.match(/\/([0-9]*)\/$/)[1];
-  }
+  };
 
   transformPlanet = (planet) => {
     return {

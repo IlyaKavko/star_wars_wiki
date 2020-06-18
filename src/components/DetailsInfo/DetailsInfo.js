@@ -40,7 +40,14 @@ export default class DetailsInfo extends React.Component {
       );
     }
 
-    const { id, name, mass, birthDate, gender } = this.state.person;
+    const {
+      id,
+      name,
+      mass,
+      birthDate,
+      gender,
+      homeworld,
+    } = this.state.person;
 
     return (
       <SwapiConsumer>
@@ -65,6 +72,10 @@ export default class DetailsInfo extends React.Component {
                   <li>
                     <span>gender</span>
                     <span>{gender}</span>
+                  </li>
+                  <li>
+                    <span>homeworld</span>
+                    <span>{homeworld}</span>
                   </li>
                 </ul>
               </div>

@@ -1,0 +1,6 @@
+[0618/190405.830:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
+[0618/190405.834:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
+[0618/190405.834:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
+[0618/190405.839:ERROR:exception_snapshot_win.cc(98)] thread ID 8104 not found in process
+[0618/190405.852:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
+[0618/190405.853:ERROR:exception_snapshot_win.cc(98)] thread ID 4048 not found in process

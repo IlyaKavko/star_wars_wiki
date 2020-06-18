@@ -8,6 +8,7 @@ import PeoplePage from "../PeoplePage";
 import SwapiServices from "../../services/SwapiServices";
 import PlanetPage from "../PlanetPage";
 import { SwapiProvider } from "../SwapiServiceContext/SwapiServiceContext";
+import StarshipsPage from "../StarshipsPage";
 
 class App extends React.Component {
   swapi = new SwapiServices();
@@ -36,6 +37,7 @@ class App extends React.Component {
           <ErrorTest />
           <PeoplePage />
           <PlanetPage />
+          <StarshipsPage />
         </div>
       </SwapiProvider>
     );

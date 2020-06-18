@@ -1,12 +1,12 @@
 import React from "react";
 import DetailsInfo from "../DetailsInfo";
-import "./PlanetPage.css";
+import "./StarshipsPage.css";
 import ErrorComponetn from "../ErrorComponent";
 import SwapiServices from "../../services/SwapiServices";
 import Row from "../Row";
-import PlanetList from "../PlanetList";
+import StarshipsList from "../Starshipslist";
 
-export default class PlanetPage extends React.Component {
+export default class StarshipsPage extends React.Component {
   swapi = new SwapiServices();
 
   state = {
@@ -30,7 +30,7 @@ export default class PlanetPage extends React.Component {
     }
 
     const itemList = (
-      <PlanetList
+      <StarshipsList
         onItemClick={this.onPersonSelect}
         getData={this.swapi.getAllPlanet}
         renderItem={(item) => item.name}
@@ -40,7 +40,7 @@ export default class PlanetPage extends React.Component {
     const detailsInfo = <DetailsInfo personId={this.state.sekectedPerson} />;
 
     return (
-      <div className="PeoplePage">
+      <div className="StarshipsPage">
         <Row left={itemList} right={detailsInfo} />
       </div>
     );
