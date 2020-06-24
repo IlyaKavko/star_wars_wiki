@@ -2,12 +2,12 @@ import React from "react";
 import DetailsInfo from "../DetailsInfo";
 import "./StarshipsPage.css";
 import ErrorComponetn from "../ErrorComponent";
-import SwapiServices from "../../services/SwapiServices";
 import Row from "../Row";
 import StarshipsList from "../Starshipslist";
+import SwapiContext from "../SwapiServiceContext/SwapiServiceContext";
 
 export default class StarshipsPage extends React.Component {
-  swapi = new SwapiServices();
+  static contextType = SwapiContext;
 
   state = {
     sekectedPerson: 3,
@@ -32,12 +32,18 @@ export default class StarshipsPage extends React.Component {
     const itemList = (
       <StarshipsList
         onItemClick={this.onPersonSelect}
-        getData={this.swapi.getAllPlanet}
         renderItem={(item) => item.name}
       />
     );
 
-    const detailsInfo = <DetailsInfo personId={this.state.sekectedPerson} />;
+    const detailsInfo = (
+      <DetailsInfo
+        personId={this.state.sekectedPerson}
+        getData={this.context.getStarships}
+        getInfo={['model', 'manufacturer', 'starshipClass']}
+        getIMG={`https://starwars-visualguide.com/assets/img/starships/`}
+      />
+    );
 
     return (
       <div className="StarshipsPage">

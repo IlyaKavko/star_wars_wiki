@@ -7,14 +7,14 @@ import ErrorComponetn from "../ErrorComponent";
 import PeoplePage from "../PeoplePage";
 import SwapiServices from "../../services/SwapiServices";
 import PlanetPage from "../PlanetPage";
-import { SwapiProvider } from "../SwapiServiceContext/SwapiServiceContext";
+import SwapiContext from "../SwapiServiceContext";
 import StarshipsPage from "../StarshipsPage";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends React.Component {
   swapi = new SwapiServices();
 
   state = {
-    isRandomPlanet: true,
     error: false,
   };
 
@@ -30,16 +30,27 @@ class App extends React.Component {
     }
 
     return (
-      <SwapiProvider value={this.swapi}>
-        <div className="App">
-          <Header />
-          <RandomPlanet />
-          <ErrorTest />
-          <PeoplePage />
-          <PlanetPage />
-          <StarshipsPage />
-        </div>
-      </SwapiProvider>
+      <SwapiContext.Provider value={this.swapi}>
+        <Router>
+          <div className="App">
+            <Header />
+            <RandomPlanet />
+            <ErrorTest />
+            <Route path="/" exact>
+              <h2>Hi my diare friends</h2>
+            </Route>
+            <Route path="/people">
+              <PeoplePage />
+            </Route>
+            <Route path="/planet">
+              <PlanetPage />
+            </Route>
+            <Route path="/ships">
+              <StarshipsPage />
+            </Route>
+          </div>
+        </Router>
+      </SwapiContext.Provider>
     );
   }
 }

@@ -1,10 +1,9 @@
 import React from "react";
 import "./DetailsInfo.css";
-import SwapiServices from "../../services/SwapiServices";
-import { SwapiConsumer } from "../SwapiServiceContext/SwapiServiceContext";
+import SwapiContext from "../SwapiServiceContext/SwapiServiceContext";
 
 export default class DetailsInfo extends React.Component {
-  swapi = new SwapiServices();
+  static contextType = SwapiContext;
 
   state = {
     person: null,
@@ -21,18 +20,21 @@ export default class DetailsInfo extends React.Component {
   }
 
   updatePerson() {
-    const { personId } = this.props;
+    const { personId, getData } = this.props;
+    console.log(getData)
     if (!personId) {
       return;
     }
 
-    this.swapi.getPerson(personId).then((person) => {
-      this.setState({ person });
+    getData(personId).then((item) => {
+      this.setState({ item });
     });
   }
 
   render() {
-    if (!this.state.person) {
+    const { item } = this.state;
+    console.log(item)
+    if (!item) {
       return (
         <div className="DetailsInfo">
           <p>Error</p>
@@ -40,49 +42,30 @@ export default class DetailsInfo extends React.Component {
       );
     }
 
-    const {
-      id,
-      name,
-      mass,
-      birthDate,
-      gender,
-      homeworld,
-    } = this.state.person;
+    const { id, name } = item;
+    const { getInfo, getIMG } = this.props;
+    
+
+    const elements = getInfo.map((key) => {
+      
+      
+      return (
+        
+        <li key={key}>
+          <span>{key} </span>
+          <span>{item[key]}</span>
+        </li>
+      );
+    });
 
     return (
-      <SwapiConsumer>
-        {(swapi) => {
-          return (
-            <div className="DetailsInfo">
-              <h3>{name}</h3>
-              <div className="info_block d-flex">
-                <img
-                  src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
-                  alt="planet"
-                />
-                <ul className="detail_info_block">
-                  <li>
-                    <span>mass</span>
-                    <span>{mass}</span>
-                  </li>
-                  <li>
-                    <span>birth date</span>
-                    <span>{birthDate}</span>
-                  </li>
-                  <li>
-                    <span>gender</span>
-                    <span>{gender}</span>
-                  </li>
-                  <li>
-                    <span>homeworld</span>
-                    <span>{homeworld}</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          );
-        }}
-      </SwapiConsumer>
+      <div className="DetailsInfo">
+        <h3>{name}</h3>
+        <div className="info_block d-flex">
+          <img src={`${getIMG}${id}.jpg`} alt="planet" />
+          <ul className="detail_info_block">{elements}</ul>
+        </div>
+      </div>
     );
   }
 }

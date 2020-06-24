@@ -2,12 +2,12 @@ import React from "react";
 import DetailsInfo from "../DetailsInfo";
 import "./PlanetPage.css";
 import ErrorComponetn from "../ErrorComponent";
-import SwapiServices from "../../services/SwapiServices";
 import Row from "../Row";
 import PlanetList from "../PlanetList";
+import SwapiContext from "../SwapiServiceContext/SwapiServiceContext";
 
 export default class PlanetPage extends React.Component {
-  swapi = new SwapiServices();
+  static contextType = SwapiContext;
 
   state = {
     sekectedPerson: 3,
@@ -32,12 +32,18 @@ export default class PlanetPage extends React.Component {
     const itemList = (
       <PlanetList
         onItemClick={this.onPersonSelect}
-        getData={this.swapi.getAllPlanet}
         renderItem={(item) => item.name}
       />
     );
 
-    const detailsInfo = <DetailsInfo personId={this.state.sekectedPerson} />;
+    const detailsInfo = (
+      <DetailsInfo
+        personId={this.state.sekectedPerson}
+        getData={this.context.getPlanet}
+        getInfo={["diameter", "population", "climate"]}
+        getIMG={`https://starwars-visualguide.com/assets/img/planets/`}
+      />
+    );
 
     return (
       <div className="PeoplePage">
