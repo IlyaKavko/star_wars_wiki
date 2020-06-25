@@ -7,6 +7,13 @@ export default class DetailsInfo extends React.Component {
 
   state = {
     person: null,
+    error: false,
+  };
+
+  onError = () => {
+    this.setState({
+      error: true,
+    });
   };
 
   componentDidMount() {
@@ -21,19 +28,21 @@ export default class DetailsInfo extends React.Component {
 
   updatePerson() {
     const { personId, getData } = this.props;
-    console.log(getData)
+    console.log(getData);
     if (!personId) {
       return;
     }
 
-    getData(personId).then((item) => {
-      this.setState({ item });
-    });
+    getData(personId)
+      .then((item) => {
+        this.setState({ item });
+      })
+      .catch(this.onError);
   }
 
   render() {
     const { item } = this.state;
-    console.log(item)
+    console.log(item);
     if (!item) {
       return (
         <div className="DetailsInfo">
@@ -44,13 +53,9 @@ export default class DetailsInfo extends React.Component {
 
     const { id, name } = item;
     const { getInfo, getIMG } = this.props;
-    
 
     const elements = getInfo.map((key) => {
-      
-      
       return (
-        
         <li key={key}>
           <span>{key} </span>
           <span>{item[key]}</span>
@@ -62,7 +67,14 @@ export default class DetailsInfo extends React.Component {
       <div className="DetailsInfo">
         <h3>{name}</h3>
         <div className="info_block d-flex">
-          <img src={`${getIMG}${id}.jpg`} alt="planet" />
+          <img
+            src={`${getIMG}${id}.jpg`}
+            onError={(e) => {
+              e.target.src =
+                "https://starwars-visualguide.com/assets/img/placeholder.jpg";
+            }}
+            alt="planet"
+          />
           <ul className="detail_info_block">{elements}</ul>
         </div>
       </div>

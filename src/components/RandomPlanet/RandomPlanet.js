@@ -1,12 +1,12 @@
 import React from "react";
 
-import SwapiService from "../../services/SwapiServices";
 import "./RandomPlanet.css";
 import Loader from "../Loader";
 import ErrorComponetn from "../ErrorComponent";
+import SwapiContext from "../SwapiServiceContext";
 
 export default class RandomPlanet extends React.Component {
-  swapi = new SwapiService();
+  static contextType = SwapiContext;
 
   state = {
     planet: {},
@@ -38,8 +38,8 @@ export default class RandomPlanet extends React.Component {
   };
 
   updatePlanet = () => {
-    const id = Math.round(Math.random() * 20);
-    this.swapi.getPlanet(id).then(this.onPlanetLoaded).catch(this.onError);
+    const id = Math.round(Math.random() * 10);
+    this.context.getPlanet(id).then(this.onPlanetLoaded).catch(this.onError);
   };
 
   render() {
@@ -67,6 +67,10 @@ const PlanetView = ({ planet }) => {
       <div className="planet_block d-flex">
         <img
           src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+          onError={(e) => {
+            e.target.src =
+              "https://starwars-visualguide.com/assets/img/placeholder.jpg";
+          }}
           alt="planet"
         />
         <ul className="planet_info_block">
