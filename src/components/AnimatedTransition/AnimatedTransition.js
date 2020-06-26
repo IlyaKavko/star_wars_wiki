@@ -2,10 +2,10 @@ import React from "react";
 
 import { Switch, Route, useLocation } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
-import RandomPlanet from "../RandomPlanet";
 import PeoplePage from "../PeoplePage";
 import PlanetPage from "../PlanetPage";
 import StarshipsPage from "../StarshipsPage";
+import CarouselPlanet from "../CarouselPlanet";
 
 const AnimatedTransition = () => {
   const location = useLocation();
@@ -19,8 +19,12 @@ const AnimatedTransition = () => {
     <animated.div key={key} style={props}>
       <Switch location={location}>
         <Route path="/" exact>
-          <RandomPlanet />
+        <CarouselPlanet/>
+        <PeoplePage />
+        <PlanetPage />
+        <StarshipsPage />
         </Route>
+
         <Route path="/people">
           <PeoplePage />
         </Route>
