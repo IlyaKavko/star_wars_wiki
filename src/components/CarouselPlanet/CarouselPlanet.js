@@ -12,7 +12,7 @@ import kamino from "./planet/kamino.png";
 import naboo from "./planet/naboo.png";
 import yvin4 from "./planet/yvin4.png";
 
-import "./CarouselPlanet.scss"
+import "./CarouselPlanet.scss";
 
 export default class CarouselPlanet extends React.Component {
   componentWillMount() {
@@ -22,7 +22,7 @@ export default class CarouselPlanet extends React.Component {
   render() {
     return (
       <div className="CarouselPlanet">
-        <Carousel w="100" id="carouselExampleIndicators">
+        <Carousel w="55" id="carouselExampleIndicators" className="Carousel">
           <Carousel.Indicators>
             <Carousel.Indicator
               target="#carouselExampleIndicators"

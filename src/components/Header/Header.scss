@@ -1,0 +1,86 @@
+@import "./Font/stylesheet.css";
+$colorWhite: #fff;
+
+.Header {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  position: relative;
+
+  a {
+    font-family: 'Michroma';
+  }
+
+  .logo {
+    width: 26%;
+    margin-bottom: 25px;
+    a {
+      margin-left: 20px;
+      &:hover {
+        text-decoration: none;
+      }
+      img {
+        width: 40%;
+      }
+    }
+  }
+  .main_nav {
+    margin-top: 24px;
+    ul {
+      margin: 0;
+      li {
+        list-style: none;
+        margin-right: 50px;
+
+        border: none;
+
+        a {
+          text-decoration: none;
+          color: $colorWhite;
+          cursor: pointer;
+
+          &:hover {
+            color: #000000;
+          }
+
+          &:focus {
+            outline: none;
+            outline-offset: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .angle-row {
+    overflow: hidden;
+    text-align: right;
+    height: 26px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+
+    .inner {
+      display: inline-block;
+      height: 26px;
+      border-top: 1px solid #ebed11;
+      border-left: 1px solid #ebed11;
+      -webkit-transform: skew(-45deg);
+      transform: skew(-45deg);
+      width: 382px;
+      position: relative;
+
+      &::before {
+        display: block;
+        content: "";
+        width: 1920px;
+        height: 1px;
+        background: #ebed11;
+        position: absolute;
+        bottom: 0;
+        right: 100%;
+      }
+    }
+  }
+}
