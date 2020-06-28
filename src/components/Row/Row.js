@@ -3,11 +3,11 @@ import React from 'react';
 
 const Row = ({ left, right}) => {
     return (
-        <div className='Row row'>
-            <div className='col'>
+        <div>
+            <div>
                 {left}
             </div>
-            <div className='col'>
+            <div>
                 {right}
             </div>
         </div>

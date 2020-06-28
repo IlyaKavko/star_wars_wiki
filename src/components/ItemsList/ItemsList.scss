@@ -1,0 +1,10 @@
+.ItemsList {
+    color: #ffffff;
+    ul {
+        display: flex;
+        justify-content: space-between;
+        li {
+            border: 1px solid #000000;
+        }
+    }
+}

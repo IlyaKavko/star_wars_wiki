@@ -66,7 +66,7 @@ export default class DetailsInfo extends React.Component {
     return (
       <div className="DetailsInfo">
         <h3>{name}</h3>
-        <div className="info_block d-flex">
+        <div className="">
           <img
             src={`${getIMG}${id}.jpg`}
             onError={(e) => {
