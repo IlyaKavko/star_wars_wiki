@@ -1,0 +1,39 @@
+@import "../style/mixin.scss";
+
+.DetailsInfo {
+  margin-bottom: 30px;
+
+  .DetailsInfoHeader {
+    margin-bottom: 30px;
+    position: relative;
+    h2 {
+      color: #fff;
+    }
+  }
+  .InfoParametr {
+    h3 {
+      color: #fff;
+    }
+
+    img {
+      width: 248px;
+      height: 248px;
+    }
+    .detail_info_block {
+      color: #fff;
+      display: flex;
+      margin-top: 20px;
+      .details {
+        margin-right: 13px;
+        .details_info {
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+
+  .InfoText {
+    color: #fff;
+  }
+  @include arrow($color: #462f2f, $bottom: -5px, $width: 855px);
+}

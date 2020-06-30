@@ -3,16 +3,17 @@ import "./ItemsList.scss";
 import SwapiService from "../../services/SwapiServices";
 import { withData } from "../helpers";
 
-import LukeSkywalker from "./people/LukeSkywalker.jpg";
-import C_3PO from "./people/C_3PO.jpg";
-import R2_D2 from "./people/R2_D2.jpg";
-import DarthVader from "./people/DarthVader.jpg";
-import LeiaOrgana from "./people/LeiaOrgana.jpg";
-import OwenLars from "./people/OwenLars.jpg";
-import BeruWhitesunlars from "./people/BeruWhitesunlars.jpg";
-import R5_D4 from "./people/R5_D4.jpg";
-import BiggsDarklighter from "./people/BiggsDarklighter.jpg";
-import ObiWanKenobi from "./people/ObiWanKenobi.jpg";
+import LukeSkywalker from "../image/people/LukeSkywalker.jpg";
+import C_3PO from "../image/people/C_3PO.jpg";
+import R2_D2 from "../image/people/R2_D2.jpg";
+import DarthVader from "../image/people/DarthVader.jpg";
+import LeiaOrgana from "../image/people/LeiaOrgana.jpg";
+import OwenLars from "../image/people/OwenLars.jpg";
+import BeruWhitesunlars from "../image/people/BeruWhitesunlars.jpg";
+import R5_D4 from "../image/people/R5_D4.jpg";
+import BiggsDarklighter from "../image/people/BiggsDarklighter.jpg";
+import ObiWanKenobi from "../image/people/ObiWanKenobi.jpg";
+import { Link } from "react-router-dom";
 
 const ItemsList = (props) => {
   const { data, onItemClick, renderItem } = props;
@@ -29,18 +30,24 @@ const ItemsList = (props) => {
     BiggsDarklighter,
     ObiWanKenobi,
   ];
-  
 
   const renderItems = (arr) => {
     return arr.map((item) => {
       const text = renderItem(item);
       const getNumber = item.id - 1;
-      const getIMG = image[getNumber]
-      
+      const getIMG = image[getNumber];
+
       return (
-        <div className="col" key={item.id} onClick={() => onItemClick(item.id)}>
-          <img src={getIMG} alt="piople" />
-          {text}
+        <div
+          className="col-lg-md peopleItemInfo"
+          key={item.id}
+          onClick={() => onItemClick(item.id)}
+        >
+          <Link to="/people/info">
+            <img src={getIMG} alt="piople" />
+
+            <div className="peopleName">{text}</div>
+          </Link>
         </div>
       );
     });
@@ -49,8 +56,16 @@ const ItemsList = (props) => {
   const items = renderItems(data);
 
   return (
-    <div className="ItemsList">
-      <div className="row">{items}</div>
+    <div className=" ItemsList">
+      <div className="ItemListHeader">
+        <h2>people</h2>
+        <div className="angle-row">
+          <div className="inner" />
+        </div>
+      </div>
+      <div className="container">
+        <div className="row peopleItem">{items}</div>
+      </div>
     </div>
   );
 };

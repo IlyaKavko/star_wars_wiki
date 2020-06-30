@@ -4,13 +4,13 @@ import DetailsInfo from "../DetailsInfo";
 import "./PeoplePage.css";
 import ErrorComponetn from "../ErrorComponent";
 import SwapiContext from "../SwapiServiceContext/SwapiServiceContext";
-import Row from "../Row";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default class PeoplePage extends React.Component {
   static contextType = SwapiContext;
 
   state = {
-    sekectedPerson: 3,
+    sekectedPerson: 1,
     error: false,
   };
 
@@ -28,26 +28,26 @@ export default class PeoplePage extends React.Component {
     if (this.state.error) {
       return <ErrorComponetn />;
     }
-
-    const itemList = (
-      <ItemsList
-        onItemClick={this.onPersonSelect}
-        renderItem={(item) => item.name}
-      />
-    );
-
-    const detailsInfo = (
-      <DetailsInfo
-        personId={this.state.sekectedPerson}
-        getData={this.context.getPerson}
-        getInfo={['mass', 'birthDate', 'gender', 'homeworld']}
-        getIMG={`https://starwars-visualguide.com/assets/img/characters/`}
-      />
-    );
-
+    
     return (
       <div className="PeoplePage">
-        <Row left={itemList} right={detailsInfo} />
+        <Router>
+          <Switch>
+            <Route path="/people/info">
+              <DetailsInfo
+                personId={this.state.sekectedPerson}
+                getData={this.context.getPerson}
+                getInfo={["mass", "birthDate", "gender", "homeworld"]}
+              />
+            </Route>
+          </Switch>
+
+          
+            <ItemsList
+              onItemClick={this.onPersonSelect}
+              renderItem={(item) => item.name}
+            />
+        </Router>
       </div>
     );
   }

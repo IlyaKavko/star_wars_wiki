@@ -15,8 +15,8 @@ import yvin4 from "./planet/yvin4.png";
 import "./CarouselPlanet.scss";
 
 export default class CarouselPlanet extends React.Component {
-  componentWillMount() {
-    window.setTimeout(() => Bootstrap.carousel(), 2000);
+  componentDidMount() {
+    setTimeout(() => Bootstrap.carousel(), 2000);
   }
 
   render() {
@@ -41,7 +41,7 @@ export default class CarouselPlanet extends React.Component {
           </Carousel.Indicators>
           <Carousel.Inner>
             <Carousel.Item active>
-              <BImg display="block" w="100" src={Tatooine} />
+              <BImg display="block" w='100' src={Tatooine} />
               <Carousel.Caption display="none md-block">
                 <h5>Tatooine</h5>
                 <p>Wasteland</p>

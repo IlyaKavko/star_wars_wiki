@@ -2,9 +2,9 @@ import React from "react";
 import DetailsInfo from "../DetailsInfo";
 import "./StarshipsPage.css";
 import ErrorComponetn from "../ErrorComponent";
-import Row from "../Row";
 import StarshipsList from "../Starshipslist";
 import SwapiContext from "../SwapiServiceContext/SwapiServiceContext";
+import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 
 export default class StarshipsPage extends React.Component {
   static contextType = SwapiContext;
@@ -29,25 +29,26 @@ export default class StarshipsPage extends React.Component {
       return <ErrorComponetn />;
     }
 
-    const itemList = (
-      <StarshipsList
-        onItemClick={this.onPersonSelect}
-        renderItem={(item) => item.name}
-      />
-    );
-
-    const detailsInfo = (
-      <DetailsInfo
-        personId={this.state.sekectedPerson}
-        getData={this.context.getStarships}
-        getInfo={['model', 'manufacturer', 'starshipClass']}
-        getIMG={`https://starwars-visualguide.com/assets/img/starships/`}
-      />
-    );
-
     return (
       <div className="StarshipsPage">
-        <Row left={itemList} right={detailsInfo} />
+        <Router>
+          <Switch>
+            <Route path="/starships/info">
+              <DetailsInfo
+                personId={this.state.sekectedPerson}
+                getData={this.context.getPerson}
+                getInfo={["mass", "birthDate", "gender", "homeworld"]}
+              />
+            </Route>
+          </Switch>
+
+          <Link to="/starships/info">
+            <StarshipsList
+              onItemClick={this.onPersonSelect}
+              renderItem={(item) => item.name}
+            />
+          </Link>
+        </Router>
       </div>
     );
   }

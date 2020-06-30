@@ -18,22 +18,16 @@ const AnimatedTransition = () => {
   return transitions.map(({ item: location, props, key }) => (
     <animated.div key={key} style={props}>
       <Switch location={location}>
-        <Route path="/" exact>
-        <CarouselPlanet/>
-        <PeoplePage />
-        <PlanetPage />
-        <StarshipsPage />
-        </Route>
-
-        <Route path="/people">
+        <Route exact path="/" >
+          <CarouselPlanet />
           <PeoplePage />
-        </Route>
-        <Route path="/planet">
           <PlanetPage />
-        </Route>
-        <Route path="/ships">
           <StarshipsPage />
         </Route>
+
+        <Route  path="/people" component={PeoplePage} />
+        <Route  path="/planet" component={PlanetPage} />
+        <Route  path="/ships" component={StarshipsPage} />
       </Switch>
     </animated.div>
   ));

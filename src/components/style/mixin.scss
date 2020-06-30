@@ -1,0 +1,33 @@
+@mixin arrow($color: #ebed11, $bottom: 10px, $width:382px) {
+  .angle-row {
+    overflow: hidden;
+    text-align: right;
+    height: 26px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: $bottom;
+
+    .inner {
+      display: inline-block;
+      height: 26px;
+      border-top: 1px solid $color;
+      border-left: 1px solid $color;
+      -webkit-transform: skew(-45deg);
+      transform: skew(-45deg);
+      width: $width;
+      position: relative;
+
+      &::before {
+        display: block;
+        content: "";
+        width: 1920px;
+        height: 1px;
+        background: $color;
+        position: absolute;
+        bottom: 0;
+        right: 100%;
+      }
+    }
+  }
+}

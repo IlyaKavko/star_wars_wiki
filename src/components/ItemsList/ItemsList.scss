@@ -1,10 +1,48 @@
+@import "../style/mixin.scss";
+
 .ItemsList {
-    color: #ffffff;
-    ul {
-        display: flex;
-        justify-content: space-between;
-        li {
-            border: 1px solid #000000;
-        }
+  color: #ffffff;
+  margin-bottom: 30px;
+
+  .ItemListHeader {
+    position: relative;
+    text-transform: capitalize;
+
+    h2 {
+      margin-bottom: 30px;
+      margin-left: 12px;
     }
+  }
+  .peopleItem {
+    .peopleItemInfo {
+      position: relative;
+      margin-bottom: 30px;
+      margin-right: 21px;
+      cursor: pointer;
+
+      a {
+        color: #ffffff;
+      }
+
+      img {
+        width: 248px;
+        height: 248px;
+        margin: 0 auto;
+        opacity: 0.8;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .peopleName {
+        position: absolute;
+        position: absolute;
+        z-index: 10;
+        bottom: 11px;
+        left: 14px;
+      }
+    }
+  }
+  @include arrow($color:#462f2f, $bottom:-5px, $width: 875px);
 }
