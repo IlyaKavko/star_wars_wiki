@@ -44,7 +44,7 @@ const ItemsList = (props) => {
           onClick={() => onItemClick(item.id)}
         >
           <Link to="/people/info">
-            <img src={getIMG} alt="piople" />
+            <img src={getIMG} alt="people" />
 
             <div className="peopleName">{text}</div>
           </Link>

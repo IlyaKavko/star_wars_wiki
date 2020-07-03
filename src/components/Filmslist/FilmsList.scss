@@ -1,10 +1,10 @@
 @import "../style/mixin.scss";
 
-.ItemsList {
+.FilmsList {
   color: #ffffff;
   margin-bottom: 30px;
 
-  .ItemListHeader {
+  .FilmsListHeader {
     position: relative;
     text-transform: capitalize;
 
@@ -13,8 +13,8 @@
       margin-left: 12px;
     }
   }
-  .peopleItem {
-    .peopleItemInfo {
+  .FilmsItem {
+    .FilmsItemInfo {
       position: relative;
       margin-bottom: 30px;
       margin-right: 21px;
@@ -26,7 +26,6 @@
 
       img {
         width: 248px;
-        height: 248px;
         margin: 0 auto;
         opacity: 0.8;
 
@@ -35,7 +34,7 @@
         }
       }
 
-      .peopleName {
+      .FilmsName {
         position: absolute;
         position: absolute;
         z-index: 10;

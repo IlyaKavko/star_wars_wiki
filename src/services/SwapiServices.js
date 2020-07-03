@@ -41,23 +41,23 @@ export default class SwapiServices {
     return result.name
   }
 
-  getAllStarships = async () => {
-    const response = await this.getData("/starships/");
-    return response.results.map(this.transformStarships);
+  getAllFilms = async () => {
+    const response = await this.getData("/films/");
+    return response.results.map(this.transformFilms);
   };
 
-  getStarships = async (id) => {
-    const starships = await this.getData(`/starships/${id}/`);
-    return this.transformStarships(starships)
+  getFilms = async (id) => {
+    const films = await this.getData(`/films/${id}/`);
+    return this.transformFilms(films)
   };
 
-  transformStarships = (starships) => {
+  transformFilms = (films) => {
     return {
-      id: this.getId(starships),
-      name: starships.name,
-      model: starships.model,
-      manufacturer: starships.manufacturer,
-      starshipClass: starships.starship_class,
+      id: this.getId(films),
+      name: films.title,
+      producer: films.producer,
+      director: films.director,
+      episodeId: films.episode_id,
     }
   }
 

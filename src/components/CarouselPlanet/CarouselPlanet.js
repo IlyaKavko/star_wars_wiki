@@ -1,16 +1,16 @@
 import React from "react";
 import Bootstrap, { Carousel, BImg } from "bootstrap-4-react";
 
-import Tatooine from "./planet/tatooine.png";
-import alberan from "./planet/alberan.png";
-import bespin from "./planet/bespin.png";
-import corusant from "./planet/corusant.png";
-import Dagobah from "./planet/Dagobah.png";
-import endor from "./planet/endor.png";
-import Hoth from "./planet/Hoth.png";
-import kamino from "./planet/kamino.png";
-import naboo from "./planet/naboo.png";
-import yvin4 from "./planet/yvin4.png";
+import Tatooine from "./planet/tatooine.jpg";
+import alberan from "./planet/alberan.jpg";
+import bespin from "./planet/bespin.jpg";
+import corusant from "./planet/corusant.jpg";
+import Dagobah from "./planet/Dagobah.jpg";
+import endor from "./planet/endor.jpg";
+import Hoth from "./planet/Hoth.jpg";
+import kamino from "./planet/kamino.jpg";
+import naboo from "./planet/naboo.jpg";
+import yvin4 from "./planet/yvin4.jpg";
 
 import "./CarouselPlanet.scss";
 

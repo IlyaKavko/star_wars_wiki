@@ -20,7 +20,7 @@ const Header = () => {
             <Link to="/planet">Planet</Link>
           </li>
           <li className="btn btn-outline-warning">
-            <Link to="/ships">Ships</Link>
+            <Link to="/films">Films</Link>
           </li>
         </ul>
       </div>

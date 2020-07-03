@@ -10,7 +10,7 @@ $colorWhite: #fff;
   position: relative;
 
   a {
-    font-family: 'Michroma';
+    font-family: "Michroma";
   }
 
   .logo {
@@ -36,14 +36,16 @@ $colorWhite: #fff;
 
         border: none;
 
+        &:hover {
+          a {
+            color: #000000;
+          }
+        }
+
         a {
           text-decoration: none;
           color: $colorWhite;
           cursor: pointer;
-
-          &:hover {
-            color: #000000;
-          }
 
           &:focus {
             outline: none;

@@ -2,28 +2,6 @@ import React from "react";
 import "./DetailsInfo.scss";
 import SwapiContext from "../SwapiServiceContext/SwapiServiceContext";
 
-import LukeSkywalkerIMG from "../image/people/LukeSkywalker.jpg";
-import C_3POIMG from "../image/people/C_3PO.jpg";
-import R2_D2IMG from "../image/people/R2_D2.jpg";
-import DarthVaderIMG from "../image/people/DarthVader.jpg";
-import LeiaOrganaIMG from "../image/people/LeiaOrgana.jpg";
-import OwenLarsIMG from "../image/people/OwenLars.jpg";
-import BeruWhitesunlarsIMG from "../image/people/BeruWhitesunlars.jpg";
-import R5_D4IMG from "../image/people/R5_D4.jpg";
-import BiggsDarklighterIMG from "../image/people/BiggsDarklighter.jpg";
-import ObiWanKenobiIMG from "../image/people/ObiWanKenobi.jpg";
-
-import LukeSkywalkerTEXT from "../TextInfo/LukeSkywalker";
-import C_3POTEXT from "../TextInfo/C_3PO";
-import R2_D2TEXT from "../TextInfo/R2_D2";
-import DarthVaderTEXT from "../TextInfo/DarthVader";
-import LeiaOrganaTEXT from "../TextInfo/LeiaOrgana";
-import OwenLarsTEXT from "../TextInfo/OwenLars";
-import BeruWhitesunlarsTEXT from "../TextInfo/BeruWhitesunlars";
-import R5_D4TEXT from "../TextInfo/R5_D4";
-import BiggsDarklighterTEXT from "../TextInfo/BiggsDarklighter";
-import ObiWanKenobiTEX from "../TextInfo/ObiWanKenobi";
-
 export default class DetailsInfo extends React.Component {
   static contextType = SwapiContext;
 
@@ -72,38 +50,14 @@ export default class DetailsInfo extends React.Component {
       );
     }
 
-    const image = [
-      LukeSkywalkerIMG,
-      C_3POIMG,
-      R2_D2IMG,
-      DarthVaderIMG,
-      LeiaOrganaIMG,
-      OwenLarsIMG,
-      BeruWhitesunlarsIMG,
-      R5_D4IMG,
-      BiggsDarklighterIMG,
-      ObiWanKenobiIMG,
-    ];
-
-    const text = [
-      <LukeSkywalkerTEXT />,
-      <C_3POTEXT />,
-      <R2_D2TEXT />,
-      <DarthVaderTEXT />,
-      <LeiaOrganaTEXT />,
-      <OwenLarsTEXT />,
-      <BeruWhitesunlarsTEXT />,
-      <R5_D4TEXT />,
-      <BiggsDarklighterTEXT />,
-      <ObiWanKenobiTEX />,
-    ];
-
     const { id, name } = item;
-    const { getInfo } = this.props;
+    const { getInfo, getIMG, getTEXT } = this.props;
 
     const getNumber = id - 1;
-    const getPicture = image[getNumber];
-    const getText = text[getNumber];
+    const getPicture = getIMG[getNumber];
+    const getText = getTEXT[getNumber];
+
+    
 
     const elements = getInfo.map((key) => {
       return (

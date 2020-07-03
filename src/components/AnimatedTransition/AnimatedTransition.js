@@ -4,7 +4,7 @@ import { Switch, Route, useLocation } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 import PeoplePage from "../PeoplePage";
 import PlanetPage from "../PlanetPage";
-import StarshipsPage from "../StarshipsPage";
+import FilmsPage from "../FilmsPage";
 import CarouselPlanet from "../CarouselPlanet";
 
 const AnimatedTransition = () => {
@@ -22,12 +22,12 @@ const AnimatedTransition = () => {
           <CarouselPlanet />
           <PeoplePage />
           <PlanetPage />
-          <StarshipsPage />
+          <FilmsPage />
         </Route>
 
         <Route  path="/people" component={PeoplePage} />
         <Route  path="/planet" component={PlanetPage} />
-        <Route  path="/ships" component={StarshipsPage} />
+        <Route  path="/films" component={FilmsPage} />
       </Switch>
     </animated.div>
   ));
