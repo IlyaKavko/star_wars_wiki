@@ -30,7 +30,6 @@ const FilsmsList = (props) => {
       const text = renderItem(item);
       const getNumber = item.id - 1;
       const getIMG = image[getNumber];
-      console.log(item.id)
 
       return (
         <div
@@ -38,7 +37,7 @@ const FilsmsList = (props) => {
           key={item.id}
           onClick={() => onItemClick(item.id)}
         >
-          <Link to="/films/info">
+          <Link to={`/films/info/${text}`}>
             <img src={getIMG} alt="planet" />
             <div className="FilmsName">{text}</div>
           </Link>

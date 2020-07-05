@@ -25,9 +25,9 @@ const AnimatedTransition = () => {
           <FilmsPage />
         </Route>
 
-        <Route  path="/people" component={PeoplePage} />
-        <Route  path="/planet" component={PlanetPage} />
-        <Route  path="/films" component={FilmsPage} />
+        <Route path="/people/" component={PeoplePage} />
+        <Route path="/planet/" component={PlanetPage} />
+        <Route path="/films/" component={FilmsPage} />
       </Switch>
     </animated.div>
   ));

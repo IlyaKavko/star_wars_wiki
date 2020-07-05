@@ -17,16 +17,16 @@ import Naboo from "../image/planet/naboo.jpg";
 import Coruscant from "../image/planet/coruscant.jpg";
 import Kamino from "../image/planet/kamino.jpg";
 
-import TatooineTEXT from "../TextInfo/TextPlanet/Tatooine"
-import AlderaanTEXT from "../TextInfo/TextPlanet/Alderaan"
-import YavinIVTEXT from "../TextInfo/TextPlanet/YavinIV"
-import HothTEXT from "../TextInfo/TextPlanet/Hoth"
-import DagobahTEXT from "../TextInfo/TextPlanet/Dagobah"
-import BespinTEXT from "../TextInfo/TextPlanet/Bespin"
-import EndorTEXT from "../TextInfo/TextPlanet/Endor"
-import NabooTEXT from "../TextInfo/TextPlanet/Naboo"
-import CoruscantTEXT from "../TextInfo/TextPlanet/Coruscant"
-import KaminoTEXT from "../TextInfo/TextPlanet/Kamino"
+import TatooineTEXT from "../TextInfo/TextPlanet/Tatooine";
+import AlderaanTEXT from "../TextInfo/TextPlanet/Alderaan";
+import YavinIVTEXT from "../TextInfo/TextPlanet/YavinIV";
+import HothTEXT from "../TextInfo/TextPlanet/Hoth";
+import DagobahTEXT from "../TextInfo/TextPlanet/Dagobah";
+import BespinTEXT from "../TextInfo/TextPlanet/Bespin";
+import EndorTEXT from "../TextInfo/TextPlanet/Endor";
+import NabooTEXT from "../TextInfo/TextPlanet/Naboo";
+import CoruscantTEXT from "../TextInfo/TextPlanet/Coruscant";
+import KaminoTEXT from "../TextInfo/TextPlanet/Kamino";
 
 export default class PlanetPage extends React.Component {
   static contextType = SwapiContext;
@@ -65,37 +65,40 @@ export default class PlanetPage extends React.Component {
     ];
 
     const text = [
-      <TatooineTEXT/>,
-      <AlderaanTEXT/>,
-      <YavinIVTEXT/>,
-      <HothTEXT/>,
-      <DagobahTEXT/>,
-      <BespinTEXT/>,
-      <EndorTEXT/>,
-      <NabooTEXT/>,
-      <CoruscantTEXT/>,
-      <KaminoTEXT/>,
+      <TatooineTEXT />,
+      <AlderaanTEXT />,
+      <YavinIVTEXT />,
+      <HothTEXT />,
+      <DagobahTEXT />,
+      <BespinTEXT />,
+      <EndorTEXT />,
+      <NabooTEXT />,
+      <CoruscantTEXT />,
+      <KaminoTEXT />,
     ];
 
     return (
       <div className="PeoplePage">
         <Router>
           <Switch>
-            <Route path="/planet/info">
-              <DetailsInfo
-                personId={this.state.sekectedPerson}
-                getData={this.context.getPlanet}
-                getInfo={["diameter", "population", "climate"]}
-                getIMG={image}
-                getTEXT={text}
-              />
-            </Route>
-          </Switch>
+            <Route
+              path="/planet/info/:text"
+              render={() => (
+                <DetailsInfo
+                  personId={this.state.sekectedPerson}
+                  getData={this.context.getPlanet}
+                  getInfo={["diameter", "population", "climate"]}
+                  getIMG={image}
+                  getTEXT={text}
+                />
+              )}
+            />
 
-          <PlanetList
-            onItemClick={this.onPersonSelect}
-            renderItem={(item) => item.name}
-          />
+            <PlanetList
+              onItemClick={this.onPersonSelect}
+              renderItem={(item) => item.name}
+            />
+          </Switch>
         </Router>
       </div>
     );

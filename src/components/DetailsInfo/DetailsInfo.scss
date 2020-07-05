@@ -11,7 +11,7 @@
     }
   }
   .InfoParametr {
-    width: 314px;
+    width: 248px;
     h3 {
       color: #fff;
     }
@@ -34,6 +34,8 @@
 
   .InfoText {
     color: #fff;
+    width: 780px;
+    padding: 40px 0 0 40px;
   }
   @include arrow($color: #462f2f, $bottom: -5px, $width: 855px);
 }

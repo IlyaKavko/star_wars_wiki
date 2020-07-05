@@ -1,0 +1,34 @@
+.Footer {
+  border: 1px solid #2a2a2a;
+  background-color: #2a2a2a;
+
+  .Footer_content {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+    ul {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+      a {
+        color: #fff;
+        &:not(:last-child) {
+          padding-right: 4px;
+        }
+        
+        li {
+          list-style: none;
+        }
+      }
+    }
+
+    .copyrast {
+      p {
+        text-align: center;
+        padding-top: 12px;
+        color: #fff;
+      }
+    }
+  }
+}

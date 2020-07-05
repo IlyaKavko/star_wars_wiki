@@ -22,7 +22,7 @@ export default class CarouselPlanet extends React.Component {
   render() {
     return (
       <div className="CarouselPlanet">
-        <Carousel w="55" id="carouselExampleIndicators" className="Carousel">
+        <Carousel w="51" id="carouselExampleIndicators" className="Carousel">
           <Carousel.Indicators>
             <Carousel.Indicator
               target="#carouselExampleIndicators"

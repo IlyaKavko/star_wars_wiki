@@ -49,37 +49,40 @@ export default class FilmsPage extends React.Component {
       ReturnOfTheJedi,
       ThePhantomMenace,
       AttackOfTheClones,
-      RevengeOfTheSith
+      RevengeOfTheSith,
     ];
 
     const text = [
-      <ANewHopeTEXT/>,
-      <TheEmpireStrikesBackTEXT/>,
-      <ReturnOfTheJediTEXT/>,
-      <ThePhantomMenaceTEXT/>,
-      <AttackOfTheClonesTEXT/>,
-      <RevengeOfTheSithTEXT/>
-    ]
+      <ANewHopeTEXT />,
+      <TheEmpireStrikesBackTEXT />,
+      <ReturnOfTheJediTEXT />,
+      <ThePhantomMenaceTEXT />,
+      <AttackOfTheClonesTEXT />,
+      <RevengeOfTheSithTEXT />,
+    ];
 
     return (
       <div className="FilmsPage">
         <Router>
           <Switch>
-            <Route path="/films/info">
-              <DetailsInfo
-                personId={this.state.sekectedPerson}
-                getData={this.context.getFilms}
-                getInfo={["producer", "director", "episodeId"]}
-                getIMG={image}
-                getTEXT={text}
-              />
-            </Route>
-          </Switch>
+            <Route
+              path="/films/info/:text"
+              render={() => (
+                <DetailsInfo
+                  personId={this.state.sekectedPerson}
+                  getData={this.context.getFilms}
+                  getInfo={["producer", "director", "episodeId"]}
+                  getIMG={image}
+                  getTEXT={text}
+                />
+              )}
+            />
 
-          <FilmsList
-            onItemClick={this.onPersonSelect}
-            renderItem={(item) => item.name}
-          />
+            <FilmsList
+              onItemClick={this.onPersonSelect}
+              renderItem={(item) => item.name}
+            />
+          </Switch>
         </Router>
       </div>
     );

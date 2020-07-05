@@ -4,8 +4,9 @@ import Header from "../Header";
 import ErrorComponetn from "../ErrorComponent";
 import SwapiServices from "../../services/SwapiServices";
 import SwapiContext from "../SwapiServiceContext";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import AnimatedTransition from "../AnimatedTransition";
+import Footer from "../Footer";
 
 export default class App extends React.Component {
   swapi = new SwapiServices();
@@ -27,12 +28,13 @@ export default class App extends React.Component {
 
     return (
       <SwapiContext.Provider value={this.swapi}>
-        <Router>
+        <BrowserRouter>
           <div className="App">
             <Header />
             <AnimatedTransition />
+            <Footer />
           </div>
-        </Router>
+        </BrowserRouter>
       </SwapiContext.Provider>
     );
   }

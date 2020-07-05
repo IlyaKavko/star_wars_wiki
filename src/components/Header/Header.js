@@ -9,18 +9,20 @@ const Header = () => {
   return (
     <div className="Header d-flex ">
       <div className="logo">
-        <Link to="/"><img src={ Logo } alt="Logo" /> </Link>
+        <Link to="/">
+          <img src={ Logo } alt="Logo" />
+        </Link>
       </div>
       <div className="main_nav">
         <ul className="d-flex">
           <li className="h btn btn-outline-warning">
-            <Link to="/people">People</Link>
+            <Link to="/people/">People</Link>
           </li>
           <li className="btn btn-outline-warning">
-            <Link to="/planet">Planet</Link>
+            <Link to="/planet/">Planet</Link>
           </li>
           <li className="btn btn-outline-warning">
-            <Link to="/films">Films</Link>
+            <Link to="/films/">Films</Link>
           </li>
         </ul>
       </div>

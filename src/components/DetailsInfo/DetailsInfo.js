@@ -1,6 +1,7 @@
 import React from "react";
 import "./DetailsInfo.scss";
 import SwapiContext from "../SwapiServiceContext/SwapiServiceContext";
+import Loader from "../Loader";
 
 export default class DetailsInfo extends React.Component {
   static contextType = SwapiContext;
@@ -45,7 +46,7 @@ export default class DetailsInfo extends React.Component {
     if (!item) {
       return (
         <div className="DetailsInfo">
-          <p>Error</p>
+          <Loader />
         </div>
       );
     }
@@ -56,8 +57,6 @@ export default class DetailsInfo extends React.Component {
     const getNumber = id - 1;
     const getPicture = getIMG[getNumber];
     const getText = getTEXT[getNumber];
-
-    
 
     const elements = getInfo.map((key) => {
       return (

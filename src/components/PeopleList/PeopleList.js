@@ -1,5 +1,5 @@
 import React from "react";
-import "./ItemsList.scss";
+import "./PeopleList.scss";
 import SwapiService from "../../services/SwapiServices";
 import { withData } from "../helpers";
 
@@ -15,7 +15,7 @@ import BiggsDarklighter from "../image/people/BiggsDarklighter.jpg";
 import ObiWanKenobi from "../image/people/ObiWanKenobi.jpg";
 import { Link } from "react-router-dom";
 
-const ItemsList = (props) => {
+const PeopleList = (props) => {
   const { data, onItemClick, renderItem } = props;
 
   const image = [
@@ -43,7 +43,7 @@ const ItemsList = (props) => {
           key={item.id}
           onClick={() => onItemClick(item.id)}
         >
-          <Link to="/people/info">
+          <Link to={`/people/info/${text}`}>
             <img src={getIMG} alt="people" />
 
             <div className="peopleName">{text}</div>
@@ -56,8 +56,8 @@ const ItemsList = (props) => {
   const items = renderItems(data);
 
   return (
-    <div className=" ItemsList">
-      <div className="ItemListHeader">
+    <div className=" PeopleList">
+      <div className="PeopleListHeader">
         <h2>people</h2>
         <div className="angle-row">
           <div className="inner" />
@@ -72,4 +72,4 @@ const ItemsList = (props) => {
 
 const { getAllPeople } = new SwapiService();
 
-export default withData(ItemsList, getAllPeople);
+export default withData(PeopleList, getAllPeople);

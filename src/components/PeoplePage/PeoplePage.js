@@ -1,5 +1,5 @@
 import React from "react";
-import ItemsList from "../ItemsList";
+import PeopleList from "../PeopleList";
 import DetailsInfo from "../DetailsInfo";
 import "./PeoplePage.css";
 import ErrorComponetn from "../ErrorComponent";
@@ -81,21 +81,23 @@ export default class PeoplePage extends React.Component {
       <div className="PeoplePage">
         <Router>
           <Switch>
-            <Route path="/people/info">
-              <DetailsInfo
-                personId={this.state.sekectedPerson}
-                getData={this.context.getPerson}
-                getInfo={["mass", "birthDate", "gender", "homeworld"]}
-                getTEXT={text}
-                getIMG={image}
-              />
-            </Route>
+            <Route
+              path="/people/info/:text"
+              render={() => (
+                <DetailsInfo
+                  personId={this.state.sekectedPerson}
+                  getData={this.context.getPerson}
+                  getInfo={["mass", "birthDate", "gender", "homeworld"]}
+                  getTEXT={text}
+                  getIMG={image}
+                />
+              )}
+            />
+            <PeopleList
+              onItemClick={this.onPersonSelect}
+              renderItem={(item) => item.name}
+            />
           </Switch>
-
-          <ItemsList
-            onItemClick={this.onPersonSelect}
-            renderItem={(item) => item.name}
-          />
         </Router>
       </div>
     );

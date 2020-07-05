@@ -43,7 +43,7 @@ const PlanetList = (props) => {
           key={item.id}
           onClick={() => onItemClick(item.id)}
         >
-          <Link to="/planet/info">
+          <Link to={`/planet/info/${text}`}>
             <img src={getIMG} alt="planet" />
             <div className="planetName">{text}</div>
           </Link>
