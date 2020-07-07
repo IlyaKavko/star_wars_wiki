@@ -1,7 +1,7 @@
 import React from "react";
 import PeopleList from "../PeopleList";
 import DetailsInfo from "../DetailsInfo";
-import "./PeoplePage.css";
+import "./PeoplePage.scss";
 import ErrorComponetn from "../ErrorComponent";
 import SwapiContext from "../SwapiServiceContext/SwapiServiceContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

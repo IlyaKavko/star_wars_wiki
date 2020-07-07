@@ -1,4 +1,5 @@
 @import "../style/mixin.scss";
+@import "../style/media.scss";
 
 .FilmsList {
   color: #ffffff;
@@ -44,4 +45,6 @@
     }
   }
   @include arrow($color: #462f2f, $bottom: -5px, $width: 875px);
+
+  @include mediaItems();
 }

@@ -4,13 +4,14 @@ import "./Header.scss";
 import { Link } from "react-router-dom";
 
 import Logo from "./logo.png";
+import BurgerMenu from "../BurgerMenu";
 
 const Header = () => {
   return (
     <div className="Header d-flex ">
       <div className="logo">
         <Link to="/">
-          <img src={ Logo } alt="Logo" />
+          <img src={Logo} alt="Logo" />
         </Link>
       </div>
       <div className="main_nav">
@@ -26,6 +27,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
+      <BurgerMenu />
       <div className="angle-row">
         <div className="inner" />
       </div>

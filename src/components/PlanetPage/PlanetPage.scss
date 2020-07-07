@@ -1,0 +1,9 @@
+@import "../style/media.scss";
+
+.PlanetPage {
+  margin-bottom: 30px;
+  width: 80%;
+  margin: 0 auto;
+
+  @include mediaScreen();
+}

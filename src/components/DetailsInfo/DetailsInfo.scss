@@ -1,4 +1,5 @@
 @import "../style/mixin.scss";
+@import "../style/media.scss";
 
 .DetailsInfo {
   margin-bottom: 30px;
@@ -11,31 +12,46 @@
     }
   }
   .InfoParametr {
-    width: 248px;
-    h3 {
-      color: #fff;
-    }
-
-    img {
+    display: flex;
+    .InfoParametrContent {
       width: 248px;
-    }
-    .detail_info_block {
-      color: #fff;
-      display: flex;
-      margin-top: 20px;
-      .details {
-        margin-right: 13px;
-        .details_info {
-          text-transform: capitalize;
+      h3 {
+        color: #fff;
+      }
+
+      img {
+        width: 248px;
+      }
+      .detail_info_block {
+        color: #fff;
+        display: flex;
+        margin-top: 20px;
+        .details {
+          margin-right: 13px;
+          .details_info {
+            text-transform: capitalize;
+          }
         }
       }
     }
-  }
 
-  .InfoText {
-    color: #fff;
-    width: 780px;
-    padding: 40px 0 0 40px;
+    .InfoText {
+      color: #fff;
+      width: 780px;
+      padding: 40px 0 0 40px;
+    }
   }
   @include arrow($color: #462f2f, $bottom: -5px, $width: 855px);
+
+  @include mediaItems($widthDetal: 45px, $width750: 473px, $width1000: 600px);
+
+  @media (min-width: 300px) and (max-width: 749px) {
+    .InfoParametr {
+      display: block;
+      .InfoText {
+        width: auto;
+        padding-left: 0;
+      }
+    }
+  }
 }

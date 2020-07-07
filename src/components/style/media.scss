@@ -1,0 +1,47 @@
+@mixin mediaScreen {
+  @media (min-width: 750px) and (max-width: 1000px) {
+    width: 90%;
+  }
+}
+
+@mixin mediaItems($widthDetal: 104px, $width750: 542px, $width1000: 654px) {
+  @media (min-width: 1000px) and (max-width: 1250px) {
+    @include arrow($color: #462f2f, $bottom: -5px, $width: $width1000);
+  }
+
+  @media (min-width: 750px) and (max-width: 999px) {
+    .peopleItem {
+      width: 543px;
+      margin: 0 auto;
+    }
+    .planetItem {
+      width: 543px;
+      margin: 0 auto;
+    }
+
+    .FilmsItem {
+      width: 543px;
+      margin: 0 auto;
+    }
+
+    @include arrow($color: #462f2f, $bottom: -5px, $width: $width750);
+  }
+
+  @media (min-width: 300px) and (max-width: 749px) {
+    .peopleItem {
+      width: 250px;
+      margin: 0 auto;
+    }
+    .planetItem {
+      width: 250px;
+      margin: 0 auto;
+    }
+
+    .FilmsItem {
+      width: 250px;
+      margin: 0 auto;
+    }
+
+    @include arrow($color: #462f2f, $bottom: -5px, $width: $widthDetal);
+  }
+}

@@ -75,8 +75,8 @@ export default class DetailsInfo extends React.Component {
             <div className="inner" />
           </div>
         </div>
-        <div className="d-flex">
-          <div className="InfoParametr">
+        <div className="InfoParametr">
+          <div className="InfoParametrContent">
             <h3>{name}</h3>
             <img src={getPicture} alt="planet" />
             <div className="detail_info_block">{elements}</div>

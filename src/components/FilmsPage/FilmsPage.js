@@ -1,6 +1,6 @@
 import React from "react";
 import DetailsInfo from "../DetailsInfo";
-import "./FilmsPage.css";
+import "./FilmsPage.scss";
 import ErrorComponetn from "../ErrorComponent";
 import SwapiContext from "../SwapiServiceContext/SwapiServiceContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

@@ -1,6 +1,6 @@
 import React from "react";
 import DetailsInfo from "../DetailsInfo";
-import "./PlanetPage.css";
+import "./PlanetPage.scss";
 import ErrorComponetn from "../ErrorComponent";
 import PlanetList from "../PlanetList";
 import SwapiContext from "../SwapiServiceContext/SwapiServiceContext";
@@ -78,7 +78,7 @@ export default class PlanetPage extends React.Component {
     ];
 
     return (
-      <div className="PeoplePage">
+      <div className="PlanetPage">
         <Router>
           <Switch>
             <Route

@@ -1,20 +1,19 @@
 @import "./Font/stylesheet.css";
 @import "../style/mixin.scss";
-
-$colorWhite: #fff;
+@import "../style/media.scss";
 
 .Header {
   width: 80%;
   margin: 0 auto;
   margin-bottom: 30px;
   position: relative;
+  justify-content: space-between;
 
   a {
     font-family: "Michroma";
   }
 
   .logo {
-    width: 26%;
     margin-bottom: 25px;
     a {
       margin-left: 20px;
@@ -22,7 +21,7 @@ $colorWhite: #fff;
         text-decoration: none;
       }
       img {
-        width: 40%;
+        width: 130px;
       }
     }
   }
@@ -44,7 +43,7 @@ $colorWhite: #fff;
 
         a {
           text-decoration: none;
-          color: $colorWhite;
+          color: #ffffff;
           cursor: pointer;
 
           &:focus {
@@ -57,4 +56,16 @@ $colorWhite: #fff;
   }
 
   @include arrow();
+
+  @include mediaScreen();
+
+  @media (min-width: 300px) and (max-width: 749px) { 
+    .main_nav {
+      display: none;
+    }
+
+    .BurgerMenu {
+      display: block;
+    }
+  }
 }
