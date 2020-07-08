@@ -48,9 +48,14 @@
   @media (min-width: 300px) and (max-width: 749px) {
     .InfoParametr {
       display: block;
+      .InfoParametrContent {
+        margin: 0 auto;
+        padding: 0;
+      }
       .InfoText {
         width: auto;
         padding-left: 0;
+        text-align: center;
       }
     }
   }

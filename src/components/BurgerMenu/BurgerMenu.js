@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./BurgerMenu.scss";
+import { Link } from "react-router-dom";
 
 const BurgerMenu = () => {
   const [status, setStatus] = useState("close");
@@ -7,13 +8,19 @@ const BurgerMenu = () => {
   const modalWindow = () => {
     if (status === "open") {
       return (
-          <div className="modal_window_content">
-            <ul>
+        <div className="modal_window_content">
+          <ul>
+            <Link to="/people/">
               <li>People</li>
+            </Link>
+            <Link to="/planet/">
               <li>Planet</li>
+            </Link>
+            <Link to="/films/">
               <li>Films</li>
-            </ul>
-          </div>
+            </Link>
+          </ul>
+        </div>
       );
     }
   };
